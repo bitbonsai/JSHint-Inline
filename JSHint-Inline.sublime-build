@@ -1,0 +1,13 @@
+{
+  "cmd": ["node", "$packages/User/jshint-inline/jshinline.js", "$file", "$packages/User/jshint-inline/options.js"],
+
+  "selector": "source.html",
+  "working_dir": "$file_path",
+
+  "file_regex": "file:(.+)\\]",
+  "line_regex": "(\\d+),(\\d+)",
+
+  "osx": {
+    "path": "/usr/local/share/npm/bin:/usr/local/bin:/opt/local/bin:/usr/local/share/npm/lib/node_modules/"
+  }
+}

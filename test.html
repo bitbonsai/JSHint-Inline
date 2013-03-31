@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	body {
+		width: 500px;
+	}
+</style>
+<body>
+	<script>
+		(function bla (arg) {
+			'use strict';
+			var global = arg;
+			window.alert(global);
+		})();
+	</script>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni ipsum eos nihil suscipit cum et quas harum illo maxime nostrum iusto sapiente atque enim quod nam repudiandae explicabo ut consequatur!</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad culpa provident velit repellendus soluta blanditiis sunt cum dolore vitae cupiditate laborum vero. Deleniti neque voluptatum in aliquam saepe consequuntur dolor.</p>
+	<table>
+		<tr>
+			<td>bla</td>
+			<td>blu</td>
+		</tr>
+	</table>
+	<script>
+		function testing (bla) {
+			'use strict';
+			var a = (bla !== undefined) ? 'this is a wellformed function' : '';
+			// global = false;
+			// if (bla) return false;
+			return a;
+		}
+		testing();
+	</script>
+</body>
+</html>
