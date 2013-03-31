@@ -14,7 +14,7 @@ They are located on a file called `options.js`.
 
 You can override it using JSHint comments like `/*global jQuery, console */`
 
-To find your options file, you can open Package Manager with `⌘ + ⇧ + P` or `⌃ + ⇧ + P` and type `Pack`. Select `Preferences: Browse Packages`. Or Go to menu `Preferences > Browse Packages`.
+To find your options file, you can open Package Manager with `⌘ + ⇧ + P` or `⌃ + ⇧ + P` and type `Pack`. Select `Preferences: Browse Packages`. Or Go to menu `Preferences > Browse Packages`. Go to `User > JSHint-Inline`. the file is there.
 
 ### Test file ###
 I've included a file called `test.html` with 2 script tags just for testing.
