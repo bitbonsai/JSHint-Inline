@@ -23,3 +23,8 @@ I've included a file called `test.html` with 2 script tags just for testing.
 Just click on the _install_ button on [nodejs.org](http://nodejs.org/)
 
 Questions, doubts, comments? Raise an __issue__
+
+#### Extra Notes ####
+To have the nice success (✓) and error (✗) signs on Sublime's console, you need a font that supports it. If you're on a mac, no problem. For Windows I recommend [DejaVu Sans Mono](http://dejavu-fonts.org/wiki/Main_Page)
+
+![Sublime Console](http://www.bitbonsai.com/wp-content/uploads/2013/03/jshintinline.png)
