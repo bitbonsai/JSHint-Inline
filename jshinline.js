@@ -36,7 +36,7 @@
         return;
     }
 
-    var justfile = filepath.split('/');
+    var justfile = (filepath.indexOf('/') > -1) ? filepath.split('/') : filepath.split('\\');
         justfile = justfile[justfile.length - 1];
 
     var html = fs.readFileSync(filepath, null);
