@@ -51,8 +51,8 @@
         return;
     }
 
-    var cheerio = require('cheerio'),
-    $ = cheerio.load(html);
+    var cheerio = require('cheerio');
+    var $ = cheerio.load(html);
 
     var $script_tags = $('script');
 
