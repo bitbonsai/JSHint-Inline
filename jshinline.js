@@ -36,8 +36,7 @@
         return;
     }
 
-    var justfile = (filepath.indexOf('/') > -1) ? filepath.split('/') : filepath.split('\\');
-        justfile = justfile[justfile.length - 1];
+    var justfile = filepath.replace(/.*?[\\|\/]/g, '');
 
     var html = fs.readFileSync(filepath, null);
 
@@ -83,7 +82,7 @@
         } catch(e) {}
 
         if (jshint.errors) {
-            
+
             jsh_errors = jshint.errors.length;
 
             jshint.errors.forEach(function(e) {
