@@ -63,13 +63,11 @@
 
     var script_lines = [];
 
-    var html_lines = html.split('\n');
-
-    for (var i = 0; i < html_lines.length; i++) {
-        if (html_lines[i].indexOf('<script') > -1) {
+    html.split('\n').forEach(function (str, i) {
+        if (str.indexOf('<script') > -1) {
             script_lines.push(i);
         }
-    }
+    });
 
     var jsh_counter = 0;
     var jsh_errors = 0;
