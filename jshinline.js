@@ -36,8 +36,7 @@
         return;
     }
 
-    var justfile = (filepath.indexOf('/') > -1) ? filepath.split('/') : filepath.split('\\');
-        justfile = justfile[justfile.length - 1];
+    var justfile = filepath.replace(/.*?[\\|\/]/g, '');
 
     var html = fs.readFileSync(filepath, null);
 
@@ -52,8 +51,8 @@
         return;
     }
 
-    var cheerio = require('cheerio'),
-    $ = cheerio.load(html);
+    var cheerio = require('cheerio');
+    var $ = cheerio.load(html);
 
     var $script_tags = $('script');
 
@@ -64,13 +63,11 @@
 
     var script_lines = [];
 
-    var html_lines = html.split('\n');
-
-    for (var i = 0; i < html_lines.length; i++) {
-        if (html_lines[i].indexOf('<script') > -1) {
+    html.split('\n').forEach(function (str, i) {
+        if (str.indexOf('<script') > -1) {
             script_lines.push(i);
         }
-    }
+    });
 
     var jsh_counter = 0;
     var jsh_errors = 0;
@@ -83,7 +80,7 @@
         } catch(e) {}
 
         if (jshint.errors) {
-            
+
             jsh_errors = jshint.errors.length;
 
             jshint.errors.forEach(function(e) {
