@@ -23,98 +23,112 @@
 
 /*global console, process, require */
 
-(function() {
+var fs = require('fs'),
+    jshint = require('jshint').JSHINT,
+    buildpath = (__dirname.indexOf('\\') > -1) ? __dirname + '\\' : __dirname + '/',
+    options = JSON.parse(fs.readFileSync(buildpath + 'options.js', null).toString()),
+    curfile = process.argv[2];
 
-    var fs = require('fs');
-    var jshint = require('jshint').JSHINT;
-    var options = JSON.parse(fs.readFileSync(process.argv[3], null).toString());
+if (!curfile) {
+    errorLog('File needs to be saved before you can use JSHint-Inline.');
+    return;
+}
 
-    var filepath = process.argv[2];
+var curfilename = (curfile.indexOf('/') > -1) ? curfile.split('/') : curfile.split('\\');
+    curfilename = curfilename[curfilename.length - 1];
 
-    if (!filepath) {
-        errorLog('File needs to be saved before you can use JSHint-Inline.');
-        return;
+var html = fs.readFileSync(curfile, null).toString() || false;
+
+var errorLog = function (msg) {
+    console.log('✗ ' + msg);
+};
+
+if (html) {
+    html = html.toString();
+} else {
+    errorLog("Couldn't get any content from this file... File: " + curfile);
+    return;
+}
+global =1
+var cheerio = require('cheerio');
+var $ = cheerio.load(html);
+
+var $script_tags = $('script');
+
+if (!$script_tags.length) {
+    errorLog("This file doesn't have any <script> tags... Are you sure you're in the right tab? This one is: " + curfile);
+    return;
+}
+
+var script_lines = [];
+
+html.split('\n').forEach(function (str, i) {
+    if (str.indexOf('<script') > -1) {
+        script_lines.push(i);
     }
+});
 
-    var justfile = filepath.split('/');
-        justfile = justfile[justfile.length - 1];
+var jsh_counter = 0;
+var jsh_errors = 0;
 
-    var html = fs.readFileSync(filepath, null);
+$script_tags.each(function () {
+    var source = this.html();
 
-    var errorLog = function (msg) {
-        console.log('✗ ' + msg);
-    };
+    try {
+        jshint(source, options);
+    } catch(e) {}
 
-    if (html) {
-        html = html.toString();
-    } else {
-        errorLog("Couldn't get any content from this file... File: " + filepath);
-        return;
-    }
+    if (jshint.errors) {
 
-    var cheerio = require('cheerio'),
-    $ = cheerio.load(html);
+        function numberWang(wangaNumb) {
+            var
+            thatsNumberWang = 5 - wangaNumb,
+                stayNumberWang = '',
+                i;
 
-    var $script_tags = $('script');
+            for (i = 0; i < thatsNumberWang; i += 1) {
+                stayNumberWang += ' ';
+            }
 
-    if (!$script_tags.length) {
-        errorLog("This file doesn't have any <script> tags... Are you sure you're in the right tab? This one is: " + filepath);
-        return;
-    }
-
-    var script_lines = [];
-
-    var html_lines = html.split('\n');
-
-    for (var i = 0; i < html_lines.length; i++) {
-        if (html_lines[i].indexOf('<script') > -1) {
-            script_lines.push(i);
+            return stayNumberWang;
         }
+
+        jsh_errors += jshint.errors.length;
+
+        jshint.errors.forEach(function(e) {
+            // if the error is null, then we could not continue (too many errors)
+            if (e === null) {
+              errorLog("Stopping, unable to continue.");
+              return;
+            }
+
+            // get the raw error data
+            var raw = e.raw;
+
+            // do some formatting if the error data is available
+            if ("undefined" !== typeof raw) {
+                var code = ' (' + e.code + ')';
+                var line = e.line + script_lines[jsh_counter];
+                errorLog(
+                [
+                    curfilename, " - ",
+                    line, ":",
+                    e.character, " ",
+                    raw.replace("{a}", e.a).
+                    replace("{b}", e.b).
+                    replace("{c}", e.c).
+                    replace("{d}", e.d),
+                    code
+                ].join(""));
+            }
+        });
     }
+    jsh_counter++;
+});
 
-    var jsh_counter = 0;
-    var jsh_errors = 0;
-
-    $script_tags.each(function () {
-        var source = this.html();
-
-        try {
-            jshint(source, options);
-        } catch(e) {}
-
-        if (jshint.errors) {
-            
-            jsh_errors = jshint.errors.length;
-
-            jshint.errors.forEach(function(e) {
-                // if the error is null, then we could not continue (too many errors)
-                if (e === null) {
-                  errorLog("Stopping, unable to continue.");
-                  return;
-                }
-
-                // get the raw error data
-                var raw = e.raw;
-
-                // do some formatting if the error data is available
-                if ("undefined" !== typeof raw) {
-                    var line = e.line + script_lines[jsh_counter];
-                  errorLog([justfile, ":",
-                       line, ":",
-                       e.character, " ",
-                       raw.replace("{a}", e.a).
-                           replace("{b}", e.b).
-                           replace("{c}", e.c).
-                           replace("{d}", e.d)].join(""));
-                }
-                });
-        }
-        jsh_counter++;
-    });
-
-    if (jsh_errors === 0) {
-        console.log('✓ JSHint PASSED');
-    } else {
-        console.log('✗ JSHint FAILED');
-    }
-})();
+if (jsh_errors === 0) {
+    console.log('✓ JSHint PASSED');
+} else {
+    var plural = (jsh_errors > 1) ? 's' : '';
+    console.log('✗ JSHint FAILED (' + jsh_errors + ' error' + plural + ' found)');
+}

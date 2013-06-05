@@ -1,0 +1,3 @@
+[{
+  "keys": ["control+shift+j"], "command": "jshintinline"
+}]

@@ -1,0 +1,10 @@
+[{
+  "caption": "Tools",
+  "mnemonic": "t",
+  "id": "tools",
+  "children": [{
+    "id": "jshintinline",
+    "caption": "JSHint Inline",
+    "command": "jshintinline"
+  }]
+}]
