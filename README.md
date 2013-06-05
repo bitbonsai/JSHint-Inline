@@ -9,12 +9,12 @@ Just add it to Sublime and choose `Tools > Build System > JSHint-inline`
 
 Use `⌘ + B` or `⌃ + B` to check all script tags on your HTML file.
 
-*or use the new shortcut, ⌃ + ⇧ + J*
+** Or use the new shortcut, `⌃ + ⇧ + J` **
 
 ### JSHint Options ###
 They are located on a file called `options.js`. 
 
-You can override it using JSHint comments like `/* jshint strict: true */` or `/* globals jQuery, console */`
+You can override it using JSHint comments like `/*global jQuery, console */`
 
 To find your options file, you can open Package Manager with `⌘ + ⇧ + P` or `⌃ + ⇧ + P` and type `Pack`. Select `Preferences: Browse Packages`. Or Go to menu `Preferences > Browse Packages`. Go to `User > JSHint-Inline`. the file is there.
 
