@@ -9,6 +9,10 @@
     "path": "/usr/local/share/npm/bin:/usr/local/bin:/opt/local/bin:/usr/local/share/npm/lib/node_modules/"
   },
 
+  "linux": {
+    "cmd": ["nodejs", "$packages/JSHint Inline/jshinline.js", "$file"]
+  },
+
   "windows": {
     "cmd": ["node.cmd", "$packages\\JSHint Inline\\jshinline.js", "$file"]
   }
