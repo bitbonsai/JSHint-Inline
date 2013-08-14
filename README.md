@@ -3,11 +3,7 @@ JSHint-Inline
 
 JSHint HTML files or other files that contains `<script>` tags.
 
-**Prerequisites:** [NodeJS](http://nodejs.org) and [jshint](https://github.com/jshint/jshint)
-
-##Install jshint with npm
-
-    npm install -g jshint
+**Prerequisites:** [NodeJS](http://nodejs.org)
 
 Just add it to Sublime and choose `Tools > Build System > JSHint-inline`
 

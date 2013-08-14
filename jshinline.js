@@ -34,15 +34,15 @@ var fs = require('fs'),
     html,
     jsh_counter = 0,
     jsh_errors = [],
-    line;
+    line,
     match,
     options = JSON.parse(fs.readFileSync(buildpath + 'options.js', null).toString()),
     re = /<script\b[^>]*>([\s\S]*?)<\/script>/gm,
     script_lines = [],
     script_tags = 0,
-    source = '',
+    source = '';
 
-var errorLog = function (msg) {
+function errorLog (msg) {
     'use strict';
 
     console.log('✗ ' + msg);
@@ -106,7 +106,7 @@ while (match = re.exec(html)){
 }
 
 if (script_tags === 0) {
-    errorLog('Stopping, unable to continue. This html file does not have any <script> tag.');
+    errorLog('Stopping, unable to continue. This file does not have any <script> tag.');
     return;
 }
 

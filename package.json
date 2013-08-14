@@ -10,8 +10,8 @@
     "type": "git",
     "url": "git://github.com/bitbonsai/JSHint-Inline.git"
   },
-  "scripts": {
-    "preinstall": "npm i -g jshint"
+  "dependencies": {
+    "jshint": ">= 2.0.0"
   },
   "keywords": [
     "JSHint",
