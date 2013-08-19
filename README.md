@@ -43,3 +43,6 @@ To have the nice success (✓) and error (✗) signs on Sublime's console, you n
 ####Run JSHint on save
 
 Install [SublimeOnSaveBuild](https://github.com/alexnj/SublimeOnSaveBuild)
+
+### License
+MIT: http://bitbonsai.mit-license.org
