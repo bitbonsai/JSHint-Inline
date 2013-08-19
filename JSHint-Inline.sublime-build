@@ -1,6 +1,5 @@
 {
   "cmd": ["node", "$packages/JSHint Inline/jshinline.js", "$file"],
-  // "selector": "source.html",
   "working_dir": "$file_path",
 
   "file_regex": "[JSHint Inline: (.+)\\]",
@@ -15,6 +14,6 @@
   },
 
   "windows": {
-    "cmd": ["node.cmd", "$packages\\JSHint Inline\\jshinline.js", "$file"]
+    "cmd": ["node", "$packages\\JSHint Inline\\jshinline.js", "$file"]
   }
 }

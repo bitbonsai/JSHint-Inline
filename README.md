@@ -3,7 +3,13 @@ JSHint-Inline
 
 JSHint HTML files or other files that contains `<script>` tags.
 
-**Prerequisites:** [NodeJS](http://nodejs.org)
+**Prerequisites:** [NodeJS](http://nodejs.org) in your PATH
+
+### Install Node ###
+Just click on the _install_ button on [http://nodejs.org](http://nodejs.org/)
+
+#### Add nodejs to your PATH 
+NodeJS Installer should add itself to your path variable. On Windows, restart your system or add it manually: `SET PATH=C:\Program Files\Nodejs;%PATH%`
 
 Just add it to Sublime using [WBond's Package Manager](https://sublime.wbond.net/packages/JSHint%20Inline).
 
@@ -31,9 +37,6 @@ To find your options file, you can open Package Manager with `⌘ + ⇧ + P` or 
 
 ### Test file ###
 I've included a file called `test.html` with 2 script tags just for testing. You can open a terminal and run `node jshinline test.html` or open it with Sublime and run the build.
-
-### Install Node ###
-Just click on the _install_ button on [http://nodejs.org](http://nodejs.org/)
 
 Questions, doubts, comments? Raise an [issue](https://github.com/bitbonsai/JSHint-Inline/issues)
 
