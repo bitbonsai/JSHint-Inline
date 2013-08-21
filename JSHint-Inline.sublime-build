@@ -2,7 +2,7 @@
   "cmd": ["node", "$packages/JSHint Inline/jshinline.js", "$file"],
   "working_dir": "$file_path",
 
-  "file_regex": "[JSHint Inline: (.+)\\]",
+  "file_regex": "JSHint Inline: (.+)\\]",
   "line_regex": "(\\d+),(\\d+): (.*)$",
 
   "osx": {

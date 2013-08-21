@@ -1,4 +1,4 @@
-<!doctype html>
+<doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,8 +13,8 @@
     <script>
         (function bla (arg) {
             // 'use strict';
-            var global = arg;
-            window.alert(global);
+            var something = arg;
+            window.alert(something);
         })();
     </script>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni ipsum eos nihil suscipit cum et quas harum illo maxime nostrum iusto sapiente atque enim quod nam repudiandae explicabo ut consequatur!</p>
@@ -30,7 +30,7 @@
             'use strict';
             var a = (bla !== undefined) ? 'this is a wellformed function' : '';
             global = false;
-            // if (bla) return false;
+            if (bla) return false;
             return a;
         }
         testing();
