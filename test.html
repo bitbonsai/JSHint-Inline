@@ -12,7 +12,7 @@
 <body>
     <script>
         (function bla (arg) {
-            'use strict';
+            // 'use strict';
             var global = arg;
             window.alert(global);
         })();
@@ -29,7 +29,7 @@
         function testing (bla) {
             'use strict';
             var a = (bla !== undefined) ? 'this is a wellformed function' : '';
-            // global = false;
+            global = false;
             // if (bla) return false;
             return a;
         }
