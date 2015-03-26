@@ -1,9 +1,9 @@
 JSHint-Inline
 =============
 
-JSHint HTML files or other files that contains `<script>` tags.
+Sublime Text extension to apply [jshint](http://jshint.com/) to HTML files or other files containing `<script>` tags.
 
-**Prerequisites:** [NodeJS](http://nodejs.org) in your PATH
+**Prerequisites:** [NodeJS](http://nodejs.org) in your PATH, and [jshint](http://jshint.com/install/)
 
 ### Install Node ###
 Just click on the _install_ button on [http://nodejs.org](http://nodejs.org/)
